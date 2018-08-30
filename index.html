@@ -17,6 +17,9 @@
             <img id=title src="assets/images/Seinfeld-Trivia.png">
             <div id="result">
             </div>
+            <div id="title-img">
+                <img src="assets/images/start.gif">
+            </div>
             <h1 id="score"></h1>
             <div id="questions">
                 <div id="question">
@@ -37,7 +40,7 @@
             <div id="correct">
             </div>
             <div id="timer" class="hide">
-                <h3>Timer : 20s</h3>
+                <h3>Timer: 20s</h3>
             </div>
             <div class="list-group hide">
                 <button type="button" class="list-group-item answer" id="answer1" onclick="guessAnswer(1)"></button>
@@ -45,6 +48,7 @@
                 <button type="button" class="list-group-item answer" id="answer3" onclick="guessAnswer(3)"></button>
                 <button type="button" class="list-group-item answer" id="answer4" onclick="guessAnswer(4)"></button>
             </div>
+            <button class="btn btn-outline-danger btn-lg" id="start-game" onclick="startGame()">Start</button>
         </div>
     </div>
 
