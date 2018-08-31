@@ -1,7 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,900');
+
+body {
+    background-image: url("../images/seinfeld_apartment.jpg");
+    background-size: 100%;
+    color: #F4F073;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
 #title {
-    width: 50%;
+    width: 55%;
 }
 
 .hide {
     display: none;
+}
+
+#main-page {
+    background-color: rgba(0, 112, 186, 0.863);
+    margin-top: 85px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+h3 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+button.list-group-item {
+    color: #F11E2F;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+img {
+    width: 350px;
+}
+
+#question-count {
+    position: fixed;
+}
+
+h1 {
+    font-size: 63px;
+}
+
+.btn-danger {
+    margin-top: 5px;
+}
+
+h4,h3,h2,h1 {
+    text-shadow: #2A403B .75px .75px;
 }

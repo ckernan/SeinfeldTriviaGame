@@ -5,6 +5,7 @@ var time = 20;
 var count = 0;
 var timeCounter;
 var timesUpCounter;
+var timesUpGif = 'assets/images/jerry-times-up.gif';
 var questions = [
     {
         question: "Who leaves a message on Jerry's phone machine threatening to \"put the kibosh\" on him?",
@@ -12,6 +13,7 @@ var questions = [
         answer2: "Crazy Joe Davola",
         answer3: "Newman",
         answer4: "Jack Klompus",
+        answer_pic: 'assets/images/joedavola.gif',
         answer: "Crazy Joe Davola",
         answer_num: 2,
     },
@@ -21,6 +23,7 @@ var questions = [
         answer2: "Eye patch",
         answer3: "Puffy shirt",
         answer4: "Cowboy hat",
+        answer_pic: 'assets/images/pirate.gif',
         answer: "Puffy shirt",
         answer_num: 3,
     },
@@ -30,15 +33,17 @@ var questions = [
         answer2: "A snickers bar",
         answer3: "A hot dog",
         answer4: "A moon pie",
-        answer: "A Snickers bar",
+        answer_pic: 'assets/images/snickers.gif',
+        answer: "A snickers bar",
         answer_num: 2,
     },
     {
-        question: "What is on the vanity plates that Kramer accidently recieves from the DMV?",
+        question: "What is on the vanity plates that Kramer accidently receives from the DMV?",
         answer1: "BIG BOY",
         answer2: "DR. LOVE",
         answer3: "10 INCHES",
         answer4: "ASSMAN",
+        answer_pic: 'assets/images/assman.gif',
         answer: "ASSMAN",
         answer_num: 4,
     },
@@ -48,6 +53,7 @@ var questions = [
         answer2: "A cinnamon babka",
         answer3: "A chocolate babka",
         answer4: "A black and white cookie",
+        answer_pic: 'assets/images/marblerye.gif',
         answer: "A marble rye",
         answer_num: 1,
     },
@@ -55,8 +61,9 @@ var questions = [
         question: "Which of the following is not an occupation George lies about having?",
         answer1: "Marine biologist",
         answer2: "Latex salesman",
-        answer3: "Nuerosugeon",
+        answer3: "Neurosugeon",
         answer4: "Architect",
+        answer_pic: 'assets/images/architect.gif',
         answer: "Nuerosurgeon",
         answer_num: 3,
     },
@@ -66,6 +73,7 @@ var questions = [
        answer2: "Jerry Seinfeld",
        answer3: "Michael Richards",
        answer4: "George Steinbrenner",
+       answer_pic: 'assets/images/steinbrenner.gif',
        answer: "Larry David",
        answer_num: 1, 
     },
@@ -75,6 +83,7 @@ var questions = [
        answer2: "A junior mint",
        answer3: "A gummy bear",
        answer4: "A milk dud",
+       answer_pic: 'assets/images/juniormint.gif',
        answer: "A junior mint",
        answer_num: 2,
     }
@@ -114,7 +123,7 @@ function displayAnswers() {
 
 function timesUp() {
     $(".list-group").addClass('hide');
-    //$("#image").removeClass('hide');
+    $("#image").removeClass('hide');
     $("#result").removeClass('hide');
     $("#timer").addClass('hide');
     $("#question").addClass('hide');
@@ -122,15 +131,15 @@ function timesUp() {
     clearInterval(timeCounter);
     clearInterval(timesUpCounter);
     unanswered++;
-    $("#result").html("<h2>Time's Up!</h2>");
-    //$("#image").html(timesUpGif)
+    $("#result").html("<h1>Time's Up!</h1>");
+    $('#image').html('<img src="' + timesUpGif + '">');
     $("#answer").html('<h2>Answer: ' + questions[count].answer + '</h2>');
-    setTimeout(nextQuestion, 5000);
+    setTimeout(nextQuestion, 4000);
 };
 
 function nextQuestion() {
     $("#answer").addClass('hide');
-    //$("#image")
+    $("#image").addClass('hide');
     $("#result").addClass('hide');
     $(".list-group").removeClass('hide');
     clearInterval(timeCounter);
@@ -150,24 +159,69 @@ function guessAnswer(num) {
     $(".list-group").addClass('hide');
     $("#timer").addClass('hide');
     $("#answer").removeClass('hide');
-    //$("#image").removeClass('hide');
+    $("#image").removeClass('hide');
     $("#result").removeClass('hide');
     if(num === questions[count].answer_num) {
         clearInterval(timeCounter);
         clearInterval(timesUpCounter);
         correct++;
-        $("#result").html("<h2>Correct!</h2>");
-        //$("#image"); answer pic
+        $("#result").html("<h1>Correct!</h1>");
+        $("#image").html("<img src='" + questions[count].answer_pic + "'>");
         $("#answer").html('<h2>Answer: ' + questions[count].answer + '</h2>');
-        setTimeout(nextQuestion, 5000);
+        setTimeout(nextQuestion, 6000);
     } else {
         clearInterval(timeCounter);
         clearInterval(timesUpCounter);
         incorrect++;
-        $("#result").html("<h2>No Soup For You!</h2>");
-        //$("#image"); wrong pic
+        $("#result").html("<h1>No Soup For You!</h1>");
+        $("#image").html("<img src='" + questions[count].answer_pic + "'>")
         $("#answer").html('<h2>Answer: ' + questions[count].answer + '</h2>');
-        setTimeout(nextQuestion, 5000);
+        setTimeout(nextQuestion, 6000);
     }
 
-}
+};
+
+function gameEnd () {
+    clearInterval(timeCounter);
+    clearInterval(timesUpCounter);
+    $("#question").addClass('hide');
+    $("#image").addClass('hide');
+    $(".list-group").addClass('hide');
+    $("#timer").addClass('hide');
+    if(correct === 1) {
+        $("#correct").html('<h1>' + correct + ' question correct!</h1>');
+    } else {
+        $("#correct").html('<h1>' + correct + ' questions correct!</h1>');
+    }
+    if(incorrect === 1) {
+        $("#incorrect").html('<h2>' + incorrect + ' question incorrect</h2>');
+    } else {
+        $("#incorrect").html('<h2>' + incorrect + ' questions incorrect</h2>');
+    }
+    if(unanswered === 1) {
+        $("#unanswered").html('<h2>' + unanswered + ' question unanswered</h2>');
+    } else {
+        $("#unanswered").html('<h2>' + unanswered + ' questions unanswered</h2>');
+    }
+    $("#restart-game").removeClass('hide');
+};
+
+function restart() {
+    correct = 0;
+    incorrect = 0;
+    unanswered = 0;
+    time = 20;
+    count = 0;
+    $("#result").html("");
+    $("#correct").html("");
+    $("#incorrect").html("");
+    $("#unanswered").html("");
+    $("#restart-game").addClass('hide');
+    $(".list-group").removeClass('hide');
+    $("#question").removeClass('hide');
+    $("#image").addClass('hide');
+    displayQuestion();
+};
+
+
+
