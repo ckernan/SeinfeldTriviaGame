@@ -32,11 +32,14 @@ h3 {
 
 button.list-group-item {
     color: #F11E2F;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
     font-style: italic;
-
 }
+
+.list-group {
+    margin: 20px 90px 10px 90px;
+}  
 
 img {
     width: 350px;
@@ -51,7 +54,7 @@ h1 {
 }
 
 .btn-danger {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 h4,h3,h2,h1 {

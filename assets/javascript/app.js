@@ -188,6 +188,7 @@ function gameEnd () {
     $("#image").addClass('hide');
     $(".list-group").addClass('hide');
     $("#timer").addClass('hide');
+    $("#end-image").removeClass('hide');
     if(correct === 1) {
         $("#correct").html('<h1>' + correct + ' question correct!</h1>');
     } else {
