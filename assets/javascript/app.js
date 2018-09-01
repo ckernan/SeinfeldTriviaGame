@@ -98,6 +98,7 @@ function startGame() {
 };
 
 function displayQuestion() {
+    $("#end-image").addClass('hide');
     $("#question-count").html('<h4>Question ' + parseInt(count + 1) + '/' + parseInt(questions.length) + '</h4>');
     $("#timer").removeClass('hide');
     $("#timer").html('<h3>Timer: ' + time + 's</h3>');
